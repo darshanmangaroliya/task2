@@ -1,25 +1,35 @@
-import logo from './logo.svg';
+import { Home } from '@material-ui/icons';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import './App.css';
+import Authpage from './components/Authpage';
+import Homepage from './components/Homepage';
+import Registration from './components/signin';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    
+    <BrowserRouter>
+    <div className="header"> 
+     <ul>
+      <Link to={"/"} ><li> <h1>task <Home/></h1></li></Link>
+      <Link to={"/auth"} ><li> login</li></Link>
+     </ul>
+    
     </div>
+
+
+    <Routes>
+    <Route path= {"/"} element={  <Homepage/>}/>
+
+      <Route path= {"/auth"} element={ <Registration/>}/>
+      <Route path= {"/authpage"} element={ <Authpage/>}/>
+    </Routes>
+      
+
+    </BrowserRouter>
   );
 }
 
 export default App;
+
+
